@@ -14,6 +14,7 @@
         contentInsetStart="72dp"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
@@ -62,6 +63,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent"
         android:layout_width="360dp"
+        android:layout_weight="50"
         android:id="@+id/drawerLayout"
         >
 
@@ -103,6 +105,17 @@
 
 
     </android.support.v4.widget.DrawerLayout>
+
+    <TextView
+
+        android:background="@color/orange"
+        android:layout_weight="250"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="New Text"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal" />
+
 
 </LinearLayout>
 
