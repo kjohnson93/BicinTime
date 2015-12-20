@@ -6,4 +6,8 @@
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryDark">@android:color/holo_orange_dark</item>
     </style>
+
+    <style name="ActionBarPopupThemeOverlay" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+    </style>
 </resources>
