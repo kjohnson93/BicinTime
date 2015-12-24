@@ -1,6 +1,7 @@
 package app.bicintime.wolf.navdrawer;
 
 import android.app.ActionBar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+
+    Fragment_footer fr1,fr2;
 
 
 
@@ -86,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         mDrawerToggle.syncState();
+
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        fr1= new Fragment_footer();
+        ft.add(R.id.top, fr1 , "top");
+        fr2 = new Fragment_footer();
+        ft.add(R.id.bottom, fr2, "bottom");
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+        getSupportFragmentManager().executePendingTransactions();
 
 
 
