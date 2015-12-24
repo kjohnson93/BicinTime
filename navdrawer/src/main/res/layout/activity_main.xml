@@ -13,8 +13,7 @@
         contentInsetLeft="72dp"
         contentInsetStart="72dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize"
@@ -53,7 +52,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:src="@drawable/ic_close_white" />
+                android:src="@drawable/ic_actionmdpi" />
         </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
@@ -61,9 +60,9 @@
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_width="360dp"
-        android:layout_weight="50"
+        android:layout_weight="1"
         android:id="@+id/drawerLayout"
         >
 
@@ -106,15 +105,23 @@
 
     </android.support.v4.widget.DrawerLayout>
 
-    <TextView
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical">
 
-        android:background="@color/orange"
-        android:layout_weight="250"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="New Text"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal" />
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="TEST"
+         android:background="@color/orange"/>
+
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:text="TEST 2"
+         android:background="#2E64FE"/>
+ </LinearLayout>
 
 
 </LinearLayout>
