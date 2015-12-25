@@ -1,13 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:id="@+id/framefrag"
     android:background="@color/orange">
 
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/orange"
-        android:text="Helloooo"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/buttonFoot"
+            android:layout_gravity="left|top" />
+
+        <TextView
+
+            android:layout_alignBaseline="@+id/buttonFoot"
+            android:layout_toRightOf="@+id/buttonFoot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:text="Helloooo"/>
+
+    </RelativeLayout>
+
+
+
+
 
 </FrameLayout>
+
+
+</RelativeLayout>
+
+

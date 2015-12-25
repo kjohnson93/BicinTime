@@ -31,6 +31,8 @@ public class MapFragment extends SupportMapFragment {
     SupportMapFragment mSupportMapFragment;                     //Fragmento que envolvera al googleMap
     CameraUpdate yourLocation;                                  //Para colocar el area de visión
 
+    Fragment_footer fr1,fr2;
+
 
     //El constructor normal de un objeto que extiende SupportMapFragment no deja crear un objeto es porque no deja pasarle argumentos mientras se construye porque deben tener un constructor vacio por defecto
     //pass the arguments to the fragment while constructing it aswel: static method. REASON why we not pass arguments to construcot its because they must have a empty constructor by default
@@ -96,6 +98,15 @@ public class MapFragment extends SupportMapFragment {
         FragmentTransaction fragmentTransaction = fManager.beginTransaction();
 
         fragmentTransaction.commit();       //El que permite que se muestre el fragmento
+
+        FragmentTransaction ft = fManager.beginTransaction();
+        fr1= new Fragment_footer();
+        ft.add(R.id.top, fr1 , "top");
+        fr2 = new Fragment_footer();
+        ft.add(R.id.bottom, fr2, "bottom");
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.commit();
+        fManager.executePendingTransactions();
 
 
     }

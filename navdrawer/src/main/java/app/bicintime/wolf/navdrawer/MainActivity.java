@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawerToggle.syncState();
 
-
+/*
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         fr1= new Fragment_footer();
         ft.add(R.id.top, fr1 , "top");
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
         getSupportFragmentManager().executePendingTransactions();
 
-
+*/
 
     }
 }
