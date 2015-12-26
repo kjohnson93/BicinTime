@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/fragment_mainLayout">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/plan_route_layout">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello from plan route fragment"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/blue"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nice to meet you, you are dead meat"
+        android:id="@+id/textView4"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/orange"/>
+</LinearLayout>
+</FrameLayout>

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,10 +20,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
-public class MapFragment extends SupportMapFragment {
+
+
+public class MapFragment extends SupportMapFragment implements GoogleMap.OnMarkerClickListener {
 
     LatLng myCoordinates = new LatLng(41.387128, 2.168565);
     final LatLng WTC = new LatLng(41.372203, 2.180496);       //Coordenadas de la estación bicing de mi trabajo
@@ -32,6 +36,8 @@ public class MapFragment extends SupportMapFragment {
     CameraUpdate yourLocation;                                  //Para colocar el area de visión
 
     Fragment_footer fr1,fr2;
+
+    TextView tw;
 
 
     //El constructor normal de un objeto que extiende SupportMapFragment no deja crear un objeto es porque no deja pasarle argumentos mientras se construye porque deben tener un constructor vacio por defecto
@@ -92,26 +98,61 @@ public class MapFragment extends SupportMapFragment {
                     //googleMap.moveCamera(CameraUpdateFactory.newLatLng(myCoordinates));
                     googleMap.animateCamera(yourLocation);                  //Localiza el area de visión
                     googleMap.addMarker(new MarkerOptions().position(WTC).title("WTC Station 1"));
+
+                    googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {  //HE DE HACER AQUI TODO LO RELACIONADO CON googleMap, sino me da error nllpointer
+                        @Override                                                               //desconozco porque, supongo que por la función de getMapAsyncs, procesos de Android, etc...
+                        public boolean onMarkerClick(Marker marker) {
+
+                            Log.d("BICIN", "ESTOY ENTRANDO 2");
+                            //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
+
+
+                            Log.d("BICIN", "ESTOY ENTRANDO 2");
+                            Log.d("BICIN", "ESTOY ENTRANDO 2");
+
+
+                            tw = (TextView) getView().findViewById(R.id.textFoot);              //No hace falta, hacer lo que hace slidenerd, ya que de momento estoy ocultando una parte del
+                                                                                                //XML, no un fragmento entero, pero me pregunto si esto produce type coupling???
+                            tw.setVisibility(View.GONE);
+
+                            return false;
+                        }
+                    });
                 }
             }
         });
-        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
-
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();                  //ME PREGUNTO, si esta forma es la más correcta, seguro que no
+                                                                                                //Sirve para añadir los dos fragmentos footer
         fragmentTransaction.commit();       //El que permite que se muestre el fragmento
 
         FragmentTransaction ft = fManager.beginTransaction();
         fr1= new Fragment_footer();
         ft.add(R.id.top, fr1 , "top");
-        fr2 = new Fragment_footer();
-        ft.add(R.id.bottom, fr2, "bottom");
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
         fManager.executePendingTransactions();
 
 
+
+
+    }
+
+    public void MarkerClicked(){                                    //este método seguro que nunca la utilizaré, lo creé pensando en la forma de slidenerd de comunicar los fragmentos.
+
+        tw = (TextView) getView().findViewById(R.id.textFoot);
+
+        tw.setVisibility(View.GONE);
+
+
+
+
     }
 
 
+    @Override
+    public boolean onMarkerClick(Marker marker) {  //TENGO que implementar este método obligatoriamente por la herencia, pero no lo utilizo nunca.
+        return false;                               //debido al listener de arriba, hay alguna forma de omitir esto?? quien sabe
+    }
 }
 
 

@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -16,11 +17,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.Marker;
+
+import java.util.Map;
+
+public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
+    FragmentManager fragmentManager;
     FragmentTransaction mFragmentTransaction;
 
     Fragment_footer fr1,fr2;
@@ -100,7 +107,52 @@ public class MainActivity extends AppCompatActivity {
         ft.commit();
         getSupportFragmentManager().executePendingTransactions();
 
-*/
+*/      Log.d("BICIN", "ESTOY ENTRANDO");
+        Log.d("BICIN", "ESTOY ENTRANDO");
 
+        fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
+
+        MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+
+      /*  mf.getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                Log.d("BICIN", "ESTOY ENTRANDO 2");
+                //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
+
+                MapFragment mf2 = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+
+                Log.d("BICIN", "ESTOY ENTRANDO 2");
+                Log.d("BICIN", "ESTOY ENTRANDO 2");
+
+                mf2.MarkerClicked();
+
+
+                return false;
+            }
+        });*/
+
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+
+
+
+        fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
+
+        MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+
+        Log.d("BICIN", "ESTOY ENTRANDO");
+
+        mf.MarkerClicked();
+
+        //MapFragment mf = (MapFragment)  fragmentManager.findFragmentById(R.id.map_fragment);
+
+        //MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+
+
+        return false;
     }
 }

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/fragment_mainLayout">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,12 +34,45 @@
         android:textStyle="italic"
         android:id="@+id/textView2"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignStart="@+id/textView1"
+        android:id="@+id/buttonTest"
+        android:text="Button TEST"/>
+
 
     <FrameLayout
         android:layout_above="@+id/bottom"
         android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/buttonFootB"
+                android:layout_gravity="left|top" />
+
+            <TextView
+
+                android:id="@+id/textFoot"
+                android:layout_alignBaseline="@+id/buttonFoot"
+                android:layout_toRightOf="@+id/buttonFootB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:text="Helloooo"/>
+
+        </RelativeLayout>
     </FrameLayout>
     <FrameLayout
         android:id="@+id/bottom"
@@ -43,3 +82,5 @@
     </FrameLayout>
 
 </RelativeLayout>
+
+</FrameLayout>
