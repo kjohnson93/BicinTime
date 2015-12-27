@@ -12,9 +12,16 @@ import android.view.ViewGroup;
  */
 public class SentFragment extends Fragment {
 
+    public SentFragment(){
+
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sent_layout,null);
+        //return inflater.inflate(R.layout.sent_layout,null);
+
+        return inflater.inflate(R.layout.sent_layout, container, false);
     }
 }

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root_framelayout"
+    android:background="?android:windowBackground">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -26,4 +32,40 @@
         android:layout_below="@+id/textView"
         android:textStyle="italic"/>
 
+    <FrameLayout
+        android:layout_above="@+id/bottom"
+        android:id="@+id/top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Button"
+                android:id="@+id/buttonFootB"
+                android:layout_gravity="left|top" />
+
+            <TextView
+
+                android:id="@+id/textFoot"
+                android:layout_alignBaseline="@+id/buttonFoot"
+                android:layout_toRightOf="@+id/buttonFootB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:text="Helloooo"/>
+
+        </RelativeLayout>
+    </FrameLayout>
+
+
 </RelativeLayout>
+
+
+</FrameLayout>

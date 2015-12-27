@@ -107,7 +107,7 @@ public class TabFragment extends Fragment {
             switch (position){
                 case 0 : return MapFragment = MapFragment.newInstance();
                 //case 0: return new PrimaryFragment();
-                case 1 : return new SocialFragment();
+                case 1 : return new RootFragment();
 
             }
             return null;
