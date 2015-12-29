@@ -67,20 +67,11 @@ public class SocialFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Button b = (Button) getActivity().findViewById(R.id.buttonFoot);
 
-        b.setText("hello from onCreate socialfragment");
+
+        final Button b = (Button) getActivity().findViewById(R.id.buttonTest);
 
         b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterNextFragment();
-            }
-        });
-
-        final Button b2 = (Button) getActivity().findViewById(R.id.buttonTest);
-
-        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 enterNextFragment();

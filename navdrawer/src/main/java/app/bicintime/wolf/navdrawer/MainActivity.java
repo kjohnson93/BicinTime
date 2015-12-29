@@ -1,26 +1,18 @@
 package app.bicintime.wolf.navdrawer;
 
-import android.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
-
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
 
@@ -112,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
         fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
 
-        MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+        MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
 
       /*  mf.getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -121,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
                 Log.d("BICIN", "ESTOY ENTRANDO 2");
                 //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
 
-                MapFragment mf2 = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+                MapFragmentUnused mf2 = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
 
                 Log.d("BICIN", "ESTOY ENTRANDO 2");
                 Log.d("BICIN", "ESTOY ENTRANDO 2");
@@ -142,15 +134,15 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
         fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
 
-        MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+        MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
 
         Log.d("BICIN", "ESTOY ENTRANDO");
 
         mf.MarkerClicked();
 
-        //MapFragment mf = (MapFragment)  fragmentManager.findFragmentById(R.id.map_fragment);
+        //MapFragmentUnused mf = (MapFragmentUnused)  fragmentManager.findFragmentById(R.id.map_fragment);
 
-        //MapFragment mf = (MapFragment) fragmentManager.findFragmentById(R.id.map);
+        //MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
 
 
         return false;

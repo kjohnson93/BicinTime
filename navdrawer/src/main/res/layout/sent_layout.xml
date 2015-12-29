@@ -33,7 +33,6 @@
         android:textStyle="italic"/>
 
     <FrameLayout
-        android:layout_above="@+id/bottom"
         android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

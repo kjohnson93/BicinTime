@@ -4,7 +4,6 @@ package app.bicintime.wolf.navdrawer;
  * Created by wolf on 12/23/2015.
  */
 
-import android.app.admin.SystemUpdatePolicy;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,7 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 
-public class MapFragment extends SupportMapFragment implements GoogleMap.OnMarkerClickListener {
+public class MapFragmentUnused extends SupportMapFragment implements GoogleMap.OnMarkerClickListener {
 
     LatLng myCoordinates = new LatLng(41.387128, 2.168565);
     final LatLng WTC = new LatLng(41.372203, 2.180496);       //Coordenadas de la estación bicing de mi trabajo
@@ -42,9 +41,9 @@ public class MapFragment extends SupportMapFragment implements GoogleMap.OnMarke
 
     //El constructor normal de un objeto que extiende SupportMapFragment no deja crear un objeto es porque no deja pasarle argumentos mientras se construye porque deben tener un constructor vacio por defecto
     //pass the arguments to the fragment while constructing it aswel: static method. REASON why we not pass arguments to construcot its because they must have a empty constructor by default
-    public static MapFragment newInstance()                 //Con un constructor metodo static si que se puede pasar argumentos
+    public static MapFragmentUnused newInstance()                 //Con un constructor metodo static si que se puede pasar argumentos
     {
-        MapFragment frag = new MapFragment();
+        MapFragmentUnused frag = new MapFragmentUnused();
 
 
         return frag;

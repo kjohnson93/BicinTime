@@ -4,7 +4,6 @@ package app.bicintime.wolf.navdrawer;
  * Created by wolf on 12/19/2015.
  */
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -18,35 +17,8 @@ import android.view.ViewGroup;
 
 //maps
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 //maps
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 public class TabFragment extends Fragment {
 
@@ -81,7 +53,6 @@ public class TabFragment extends Fragment {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
-
         return x;
 
     }
@@ -99,15 +70,16 @@ public class TabFragment extends Fragment {
          * Return fragment with respect to Position .
          */
 
-        MapFragment MapFragment;
+        MapFragmentUnused MapFragment;
 
         @Override
         public Fragment getItem(int position)
         {
             switch (position){
-                case 0 : return MapFragment = MapFragment.newInstance();
+                //case 0 : return MapFragmentUnused = MapFragmentUnused.newInstance();
+                case 0 : return new RootFragmentA();
                 //case 0: return new PrimaryFragment();
-                case 1 : return new RootFragment();
+                case 1 : return new RootFragmentB();
 
             }
             return null;

@@ -13,13 +13,13 @@ import android.view.ViewGroup;
 /**
  * Created by shahabuddin on 6/6/14.
  */
-public class RootFragment extends Fragment implements OnBackPressListener {
+public class RootFragmentB extends Fragment implements OnBackPressListener {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.root_layout, container, false);
+        View rootView = inflater.inflate(R.layout.rootb_layout, container, false);
 
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
