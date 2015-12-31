@@ -1,5 +1,6 @@
 package app.bicintime.wolf.navdrawer;
 
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
     Fragment_footer fr1,fr2;
 
-
+    private TabFragment tabFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +133,19 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
             }
         });*/
 
+
+        if (savedInstanceState == null) {
+            // withholding the previously created fragment from being created again
+            // On orientation change, it will prevent fragment recreation
+            // its necessary to reserving the fragment stack inside each tab
+            initScreen();
+
+        } else {
+            // restoring the previously created fragment
+            // and getting the reference
+            tabFragment = (TabFragment) getSupportFragmentManager().getFragments().get(0);
+        }
+
         ArrayList<String> groupItem = new ArrayList<String>();  // a partir de aquí empieza lo que he descubierto para el right navigation drawer
         ArrayList<Object> childItem = new ArrayList<Object>();
 
@@ -156,6 +170,14 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
        mNavigationView2.setOnChildClickListener(this);                              //para que se abran las pestañas
 
+    }
+
+    private void initScreen() {
+        // Creating the ViewPager container fragment once
+        tabFragment = new TabFragment();
+
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+       // fragmentManager.beginTransaction().replace(R.id.container, tabFragment).commit();
     }
 
     @Override
@@ -184,5 +206,11 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
         Toast.makeText(this, "Clicked On Child" + v.getTag(),
                 Toast.LENGTH_SHORT).show();
         return true;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

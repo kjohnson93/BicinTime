@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 /**
  * Created by wolf on 12/31/2015.
  */
-public class PlanRouteFragmentStartA2 extends Fragment implements GoogleMap.OnMarkerClickListener{
+public class PlanRouteFragmentStartA2 extends RootFragment implements GoogleMap.OnMarkerClickListener{
 
     MapView mMapView;
     private GoogleMap googleMap;

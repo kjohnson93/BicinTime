@@ -13,7 +13,7 @@ import android.widget.Button;
 /**
  * Created by wolf on 12/31/2015.
  */
-public class PlanRouteFragmentStartA extends Fragment {
+public class PlanRouteFragmentStartA extends RootFragment {
 
     @Nullable
     @Override

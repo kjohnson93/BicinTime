@@ -1,6 +1,7 @@
 package app.bicintime.wolf.navdrawer;
 
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +15,7 @@ import android.widget.Button;
 /**
  * Created by wolf on 12/26/2015.
  */
-public class PlanRouteFragment extends Fragment {
+public class PlanRouteFragment extends RootFragment {
 
     //public empty constrctor may solve the problem??
     public PlanRouteFragment(){

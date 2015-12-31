@@ -25,6 +25,13 @@ public class TabFragment extends Fragment {
     public static TabLayout tabLayout;
     public static ViewPager viewPager;
     public static int int_items = 2 ;
+    private ViewPagerAdapter adapter;
+
+
+    public TabFragment(){
+
+
+    }
 
     @Nullable
     @Override
@@ -32,14 +39,16 @@ public class TabFragment extends Fragment {
         /**
          *Inflate tab_layout and setup Views.
          */
-        View x =  inflater.inflate(R.layout.tab_layout,null);
-        tabLayout = (TabLayout) x.findViewById(R.id.tabs);
-        viewPager = (ViewPager) x.findViewById(R.id.viewpager);
+        View rootView =  inflater.inflate(R.layout.tab_layout,null);
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
 
         /**
          *Set an Apater for the View Pager
          */
-        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+
+
+
 
         //viewPager.setCurrentItem(1);
 
@@ -49,66 +58,37 @@ public class TabFragment extends Fragment {
          * Maybe a Support Library Bug .
          */
 
+
+        return rootView;
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        adapter = new ViewPagerAdapter(getResources(), getChildFragmentManager());
+
+        viewPager.setAdapter(adapter);
         tabLayout.post(new Runnable() {
             @Override
             public void run() {
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
-        return x;
-
     }
 
-    class MyAdapter extends FragmentPagerAdapter{
+    public boolean onBackPressed() {
+        // currently visible tab Fragment
+        OnBackPressListener currentFragment = (OnBackPressListener) adapter.getRegisteredFragment(viewPager.getCurrentItem());
 
-       // private Context context;
-
-        public MyAdapter(FragmentManager fm) {
-            super(fm);
-           // this.context = context;
+        if (currentFragment != null) {
+            // lets see if the currentFragment or any of its childFragment can handle onBackPressed
+            return currentFragment.onBackPressed();
         }
 
-        /**
-         * Return fragment with respect to Position .
-         */
-
-        MapFragmentUnused MapFragment;
-
-        @Override
-        public Fragment getItem(int position)
-        {
-            switch (position){
-                //case 0 : return MapFragmentUnused = MapFragmentUnused.newInstance();
-                case 0 : return new RootFragmentA();
-                //case 0: return new PrimaryFragment();
-                case 1 : return new RootFragmentB();
-
-            }
-            return null;
-        }
-
-        @Override
-        public int getCount() {
-
-            return 2;
-
-        }
-
-        /**
-         * This method returns the title of the tab according to the position.
-         */
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-
-            switch (position){
-                case 0 :
-                    return "Map"; //deberia estar en strings
-                case 1 :
-                    return "Plan a Route";
-
-            }
-            return null;
-        }
+        // this Fragment couldn't handle the onBackPressed call
+        return false;
     }
 }
+
