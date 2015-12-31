@@ -40,14 +40,16 @@ public class PlanRouteFragment extends Fragment {
 
                 Log.d("BUTTON", "ENTERING #2");
 
-                SentFragment sentFragment = new SentFragment();
+                //SentFragment sentFragment = new SentFragment();
+                PlanRouteFragmentStartA planRouteFragmentStartA = new PlanRouteFragmentStartA();
 
                 FragmentManager fragmentManager = getChildFragmentManager();
 
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.addToBackStack(null);
 
-                fragmentTransaction.replace(R.id.root_framelayout, sentFragment).commit();
+                //fragmentTransaction.replace(R.id.rootB_framelayout, sentFragment).commit();
+                fragmentTransaction.replace(R.id.rootB_framelayout, planRouteFragmentStartA).commit();
 
 
             }

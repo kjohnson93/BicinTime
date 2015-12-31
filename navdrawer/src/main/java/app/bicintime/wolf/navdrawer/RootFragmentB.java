@@ -26,12 +26,12 @@ public class RootFragmentB extends Fragment implements OnBackPressListener {
 
         fragmentTransaction.addToBackStack(null);
 
-        SocialFragment socialFragment = new SocialFragment();
+        PlanRouteFragment planRouteFragment = new PlanRouteFragment();
 
 
 
 
-        fragmentTransaction.replace(R.id.root_framelayout, socialFragment).commit();
+        fragmentTransaction.replace(R.id.rootB_framelayout, planRouteFragment).commit();
 
         //fragmentTransaction = fragmentManager.beginTransaction();
 

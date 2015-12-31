@@ -103,9 +103,9 @@ public class TabFragment extends Fragment {
 
             switch (position){
                 case 0 :
-                    return "Primary";
+                    return "Map"; //deberia estar en strings
                 case 1 :
-                    return "Social";
+                    return "Plan a Route";
 
             }
             return null;

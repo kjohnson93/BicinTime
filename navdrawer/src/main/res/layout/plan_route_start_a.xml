@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:id="@+id/rootB_framelayout"
     android:background="?android:windowBackground">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/plan_route_layout">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello from plan route fragment"
-        android:id="@+id/textView3"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/blue"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nice to meet you, you are dead meat"
-        android:id="@+id/textView4"
+        android:id="@+id/editText"
         android:layout_gravity="center_horizontal"
         android:background="@color/orange"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView5"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonPlanRoute"
-        android:text="Button: Start"/>
+        android:id="@+id/buttonStartA"
+        android:layout_gravity="center_horizontal"
+        android:text="Button: A PlanRouteFragmentStartA2"/>
 </LinearLayout>
+
 </FrameLayout>

@@ -103,7 +103,7 @@ public class SocialFragment extends Fragment {
 
         // Store the Fragment in stack
         transaction.addToBackStack(null);
-        transaction.replace(R.id.root_framelayout, planRouteFragment).commit(); //ESTO NO HA SIDO INFLATED, COMO HACER QUE SE HAGA INFLATED?
+        transaction.replace(R.id.rootB_framelayout, planRouteFragment).commit(); //ESTO NO HA SIDO INFLATED, COMO HACER QUE SE HAGA INFLATED?
 
         //para poder reemplazarlo, antes, necesito que el primer framelayot deba ser subido en un commit, i am fucked... :
         //http://stackoverflow.com/questions/14810348/android-fragment-replace-doesnt-replace-content-puts-it-on-top
