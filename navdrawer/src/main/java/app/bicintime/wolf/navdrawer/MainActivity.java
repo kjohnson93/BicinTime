@@ -10,14 +10,20 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.View;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
-public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener{
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener, ExpandableListView.OnChildClickListener {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
+    ExpandableListView mNavigationView2;
     FragmentManager mFragmentManager;
     FragmentManager fragmentManager;
     FragmentTransaction mFragmentTransaction;
@@ -37,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
          */
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.shitstuff) ;
+        mNavigationView = (NavigationView) findViewById(R.id.shitstuff) ; //left navigation drawer
+        mNavigationView2 = (ExpandableListView) findViewById(R.id.right_drawer);  //right navigation drawer
 
 
 /**
@@ -47,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();
+        mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();  //el fragmento padre de todos que engloba al resto de fragmentos
 
         /**
          * Setup click events on the Navigation View Items.
@@ -55,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
+            public boolean onNavigationItemSelected(MenuItem menuItem) {  //esto solo sirve para probar abrir un par de paginas desde el Left navigation drawer
                 mDrawerLayout.closeDrawers();
 
 
@@ -102,9 +109,9 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 */      Log.d("BICIN", "ESTOY ENTRANDO");
         Log.d("BICIN", "ESTOY ENTRANDO");
 
-        fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
+        //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
 
-        MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
+       // MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
 
       /*  mf.getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -124,6 +131,30 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
                 return false;
             }
         });*/
+
+        ArrayList<String> groupItem = new ArrayList<String>();  // a partir de aquí empieza lo que he descubierto para el right navigation drawer
+        ArrayList<Object> childItem = new ArrayList<Object>();
+
+        groupItem.add("TechNology");                            //hay que darle datos al right nav drawer sino dará errores nullpointer
+        groupItem.add("Mobile");
+
+        ArrayList<String> child = new ArrayList<String>();
+        child.add("Java");
+        child.add("Drupal");
+        child.add(".Net Framework");
+        child.add("PHP");
+        childItem.add(child);
+
+        child = new ArrayList<String>();
+        child.add("Android");
+        child.add("Window Mobile");
+        child.add("iPHone");
+        child.add("Blackberry");
+        childItem.add(child);
+
+        mNavigationView2.setAdapter(new NewAdapter(this, groupItem, childItem));  //aquí podré diseñar toda la vista de la lista, it's gonna take some time
+
+       mNavigationView2.setOnChildClickListener(this);                              //para que se abran las pestañas
 
     }
 
@@ -146,5 +177,12 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
 
         return false;
+    }
+
+    @Override
+    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) { //metodo override por la interfaz de clicar para que se abran las pestañas
+        Toast.makeText(this, "Clicked On Child" + v.getTag(),
+                Toast.LENGTH_SHORT).show();
+        return true;
     }
 }
