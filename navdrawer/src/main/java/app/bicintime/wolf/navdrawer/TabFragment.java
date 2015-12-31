@@ -41,6 +41,8 @@ public class TabFragment extends Fragment {
          */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
 
+        //viewPager.setCurrentItem(1);
+
         /**
          * Now , this is a workaround ,
          * The setupWithViewPager dose't works without the runnable .

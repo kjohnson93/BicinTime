@@ -24,29 +24,61 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/red">
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:orientation="vertical"
+                android:id="@+id/fragment_linearlayout_2"
+                android:visibility="visible"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello from textview"
+                    android:background="@color/yellow"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click me 1"
+                    android:visibility="visible"
+                    android:id="@+id/fragment_linearlayout_2_button1"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:orientation="vertical"
+                android:id="@+id/fragment_linearlayout_1">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="New Button"
-                    android:id="@+id/buttonFootA"
-                    android:layout_gravity="left|top" />
-
+                    android:text="Click me 2"
+                    android:id="@+id/buttonFootAclick2"/>
                 <TextView
-
-                    android:id="@+id/textFootA"
-                    android:layout_alignBaseline="@+id/buttonFootA"
-                    android:layout_toRightOf="@+id/buttonFootA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/green"
-                    android:text="Helloooo"/>
+                    android:text="Hello from textview"
+                    android:background="@color/yellow"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click me 1"
+                    android:visibility="visible"
+                    android:id="@+id/buttonFootNULL"/>
 
-            </RelativeLayout>
+            </LinearLayout>
+
+            </LinearLayout>
         </FrameLayout>
 
     </RelativeLayout>

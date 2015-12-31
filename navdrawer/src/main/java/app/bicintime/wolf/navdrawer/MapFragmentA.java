@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -79,9 +81,15 @@ public class MapFragmentA extends Fragment implements GoogleMap.OnMarkerClickLis
                 Log.d("BICIN", "ESTOY ENTRANDO 2");
 
 
-                TextView tw = (TextView) getView().findViewById(R.id.textFootA);              //No hace falta, hacer lo que hace slidenerd, ya que de momento estoy ocultando una parte del
+                //TextView tw = (TextView) getView().findViewById(R.id.textFootA);              //No hace falta, hacer lo que hace slidenerd, ya que de momento estoy ocultando una parte del
                 //XML, no un fragmento entero, pero me pregunto si esto produce type coupling???
-                tw.setVisibility(View.GONE);
+                // tw.setVisibility(View.GONE);
+                Button button1 = (Button) getView().findViewById(R.id.buttonFootAclick2);
+                button1.setVisibility(View.GONE);
+
+                //Button button2 = (Button) getView().findViewById(R.id.fragment_linearlayout_2_button1);
+                LinearLayout linearLayout2 = (LinearLayout) getView().findViewById(R.id.fragment_linearlayout_2);
+                linearLayout2.setVisibility(View.GONE);
 
                 return false;
             }
@@ -93,8 +101,32 @@ public class MapFragmentA extends Fragment implements GoogleMap.OnMarkerClickLis
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
-        // Perform any camera updates here
+
+
+
+
+
         return v;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        TabFragment tabFragment = new TabFragment();
+
+        Button button2 = (Button) getView().findViewById(R.id.buttonFootNULL);
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                TabFragment tabFragment = new TabFragment();
+
+                tabFragment.viewPager.setCurrentItem(1); //Esto funciona, dunno why... supongo que tendre errores cuanto quiera pasar info de una tab a otra.
+
+            }
+        });
     }
 
     @Override
