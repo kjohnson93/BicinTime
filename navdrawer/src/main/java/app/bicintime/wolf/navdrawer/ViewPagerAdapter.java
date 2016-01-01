@@ -25,7 +25,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
 
-            case 0: return new PlanRouteFragment();
+            case 0: return new RootFragmentA();
 
             case 1: return new PlanRouteFragment();
 

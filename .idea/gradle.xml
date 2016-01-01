@@ -11,7 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/bicintime" />
             <option value="$PROJECT_DIR$/navdrawer" />
+            <option value="$PROJECT_DIR$/rico" />
           </set>
         </option>
       </GradleProjectSettings>

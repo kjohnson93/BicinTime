@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BicinTime.iml" filepath="$PROJECT_DIR$/BicinTime.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bicintime/bicintime.iml" filepath="$PROJECT_DIR$/bicintime/bicintime.iml" />
       <module fileurl="file://$PROJECT_DIR$/navdrawer/navdrawer.iml" filepath="$PROJECT_DIR$/navdrawer/navdrawer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rico/rico.iml" filepath="$PROJECT_DIR$/rico/rico.iml" />
     </modules>
   </component>
 </project>

@@ -22,12 +22,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarkerClickListener, ExpandableListView.OnChildClickListener {
 
-    DrawerLayout mDrawerLayout;
-    NavigationView mNavigationView;
-    ExpandableListView mNavigationView2;
-    FragmentManager mFragmentManager;
+
+
     FragmentManager fragmentManager;
-    FragmentTransaction mFragmentTransaction;
+
 
     Fragment_footer fr1,fr2;
 
@@ -43,24 +41,23 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
          *Setup the DrawerLayout and NavigationView
          */
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        mNavigationView = (NavigationView) findViewById(R.id.shitstuff) ; //left navigation drawer
-        mNavigationView2 = (ExpandableListView) findViewById(R.id.right_drawer);  //right navigation drawer
 
 
-/**
- * Lets inflate the very first fragment
- * Here , we are inflating the TabFragment as the first Fragment
- */
 
+        /**
+         * Lets inflate the very first fragment
+         * Here , we are inflating the TabFragment as the first Fragment
+         */
+        /*
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView,new TabFragment()).commit();  //el fragmento padre de todos que engloba al resto de fragmentos
-
+        */
         /**
          * Setup click events on the Navigation View Items.
          */
 
+        /*
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {  //esto solo sirve para probar abrir un par de paginas desde el Left navigation drawer
@@ -82,56 +79,12 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
             }
 
         });
+        */
 
         /**
          * Setup Drawer Toggle of the Toolbar
          */
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        //android.support.v7.widget.SearchView searchView = (android.support.v7.widget.SearchView) findViewById(R.id.searchbar);
-        //ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, searchView, R.string.app_name,R.string.app_name);
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,
-               R.string.app_name);
-
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        mDrawerToggle.syncState();
-
-/*
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        fr1= new Fragment_footer();
-        ft.add(R.id.top, fr1 , "top");
-        fr2 = new Fragment_footer();
-        ft.add(R.id.bottom, fr2, "bottom");
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        ft.commit();
-        getSupportFragmentManager().executePendingTransactions();
-
-*/      Log.d("BICIN", "ESTOY ENTRANDO");
-        Log.d("BICIN", "ESTOY ENTRANDO");
-
-        //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
-
-       // MapFragmentUnused mf = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
-
-      /*  mf.getMap().setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                Log.d("BICIN", "ESTOY ENTRANDO 2");
-                //fragmentManager = getSupportFragmentManager(); //me fallaba esta línia, ... utilizaba creo getFragmentManager directo, porque fallaba???
-
-                MapFragmentUnused mf2 = (MapFragmentUnused) fragmentManager.findFragmentById(R.id.map);
-
-                Log.d("BICIN", "ESTOY ENTRANDO 2");
-                Log.d("BICIN", "ESTOY ENTRANDO 2");
-
-                mf2.MarkerClicked();
-
-
-                return false;
-            }
-        });*/
 
 
         if (savedInstanceState == null) {
@@ -166,9 +119,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
         child.add("Blackberry");
         childItem.add(child);
 
-        mNavigationView2.setAdapter(new NewAdapter(this, groupItem, childItem));  //aquí podré diseñar toda la vista de la lista, it's gonna take some time
 
-       mNavigationView2.setOnChildClickListener(this);                              //para que se abran las pestañas
 
     }
 
@@ -177,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
         tabFragment = new TabFragment();
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
-       // fragmentManager.beginTransaction().replace(R.id.container, tabFragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.rootB_framelayout, tabFragment).commit();
     }
 
     @Override
@@ -211,6 +162,15 @@ public class MainActivity extends AppCompatActivity implements GoogleMap.OnMarke
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (!tabFragment.onBackPressed()) {
+            // container Fragment or its associates couldn't handle the back pressed task
+            // delegating the task to super class
+            super.onBackPressed();
+
+        } else {
+            // carousel handled the back pressed task
+            // do not call super
+        }
+
     }
 }
